@@ -1,0 +1,11 @@
+{
+  "format": "pspwlanfwpatch-json/1",
+  "name": "SSID_FILTER_OFF",
+  "description": "Keep BSSes without an SSID element (e.g. an NDS beacon) in the scan results. The original firmware drops them in two places; both checks become nops.",
+  "changes": [
+    {"addr": "0xC0000B48", "old": "2A D0", "new": "C0 46",
+     "comment": "FUN_c0000880 (adds a BSS to the scan table): beq drop when find_ie(SSID) == NULL -> nop"},
+    {"addr": "0xC0001AC6", "old": "44 D1", "new": "C0 46",
+     "comment": "FUN_c0001aa8: bne 'first IE is not SSID -> return 0' -> nop (a DS beacon starts with Supported Rates)"}
+  ]
+}

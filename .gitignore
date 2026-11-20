@@ -1,0 +1,19 @@
+# build outputs (PSPSDK)
+*.o
+*.a
+*.elf
+*.prx
+*.PBP
+*.SFO
+PARAM.SFO
+
+# patch files: built from the JSON with tools/pspwlanfwpatch.py; they carry the
+# original firmware bytes at each patched spot
+*.wfp
+
+# firmware images: never publish (copyrighted)
+*.bin
+
+# Python
+__pycache__/
+*.pyc
